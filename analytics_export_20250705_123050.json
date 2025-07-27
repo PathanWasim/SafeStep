@@ -1,0 +1,26 @@
+{
+  "detection_counts": {},
+  "hourly_activity": {},
+  "total_detections": 0,
+  "most_common_object": null,
+  "recent_sessions": [
+    [
+      "20250705_122723",
+      "2025-07-05T12:27:23.748724",
+      "autonomous",
+      0
+    ],
+    [
+      "20250705_122606",
+      "2025-07-05T12:26:06.250607",
+      "autonomous",
+      0
+    ],
+    [
+      "20250705_120446",
+      "2025-07-05T12:04:46.067088",
+      "autonomous",
+      1
+    ]
+  ]
+}

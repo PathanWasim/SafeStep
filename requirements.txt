@@ -1,0 +1,38 @@
+# Core AI and Computer Vision
+torch>=2.0.0
+torchvision>=0.15.0
+ultralytics>=8.0.0
+opencv-python>=4.8.0
+mediapipe>=0.10.0
+pillow>=9.0.0
+
+# Audio and Speech Processing
+SpeechRecognition>=3.10.0
+pyttsx3>=2.90
+pyaudio>=0.2.11
+
+# UI and Visualization
+customtkinter>=5.2.0
+matplotlib>=3.7.0
+seaborn>=0.12.0
+
+# Data Processing and Analytics
+numpy>=1.24.0
+scipy>=1.10.0
+scikit-learn>=1.3.0
+pandas>=2.0.0
+
+# Database and Networking
+websockets>=11.0
+requests>=2.31.0
+aiohttp>=3.8.0
+
+# Utilities
+pathlib
+dataclasses-json>=0.6.0
+
+# Optional: For MiDaS depth estimation
+timm>=0.9.0
+
+# Windows specific (uncomment if on Windows)
+# pywin32>=306 
