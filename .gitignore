@@ -1,0 +1,23 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*.so
+
+# Database and logs
+*.db
+*.log
+
+# Model weights and training runs
+*.pt
+runs/
+
+# IDE/project files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# User-specific config (optional)
+config.json 
