@@ -1,2 +1,338 @@
-# 🧭 SafeStep - Advanced Indoor Navigation System[![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)](https://www.python.org/downloads/)[![PyTorch](https://img.shields.io/badge/PyTorch-2.0+-red.svg)](https://pytorch.org/)[![OpenCV](https://img.shields.io/badge/OpenCV-4.8+-green.svg)](https://opencv.org/)[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)> **AI-Powered Indoor Navigation System for Visually Impaired and Accessibility**SafeStep is a comprehensive indoor navigation system that combines advanced computer vision, artificial intelligence, and multi-modal accessibility features to provide real-time navigation assistance in indoor environments.## 🌟 Key Features### 🤖 AI-Powered Detection- **Real-time Object Detection**: YOLO-based detection of people, obstacles, doors, stairs, furniture- **Depth Estimation**: MiDaS model for 3D depth mapping and distance calculation- **Risk Assessment**: Intelligent risk level classification (high/medium/low/minimal)- **Distance Estimation**: Accurate distance calculation to detected objects### 🎤 Multi-Modal Accessibility- **Voice Assistant**: Natural language processing for voice commands and feedback- **Gesture Recognition**: Hand gesture control using MediaPipe- **Text-to-Speech**: Real-time audio feedback for navigation instructions- **Emergency Mode**: Quick activation for urgent situations### 🧭 Advanced Navigation- **Path Planning**: A* algorithm with obstacle avoidance- **Real-time Analytics**: Comprehensive detection logging and analytics- **Safety Monitoring**: Continuous safety assessment and warnings- **Multiple Modes**: Autonomous, Guided, Exploration, and Emergency modes### 🖥️ Modern User Interface- **Dark Theme**: Modern CustomTkinter interface- **Real-time Visualization**: Live video feed with detection overlays- **Analytics Dashboard**: Comprehensive statistics and data export- **Responsive Design**: Adaptive layout for different screen sizes## 📋 System Requirements### Minimum Requirements- **Python 3.8+** (3.9+ recommended)- **4GB RAM** (8GB+ recommended)- **Webcam** or USB camera- **Microphone** (for voice commands)- **Speakers/Headphones** (for voice feedback)### Recommended- **GPU with CUDA** (for faster AI processing)- **8GB+ RAM** (for optimal performance)- **High-resolution camera** (720p or higher)- **Windows/Linux/macOS** (all supported)## 🚀 Quick Start### 1. Clone the Repository```bashgit clone https://github.com/PathanWasim/SafeStep.gitcd SafeStep```### 2. Run Installation Script```bashpython install.py```This automated script will:- ✅ Check Python version compatibility- ✅ Install PyTorch with appropriate CUDA support- ✅ Install all required dependencies- ✅ Set up system-specific dependencies- ✅ Create configuration file- ✅ Test all imports### 3. Start the Application```bash# Run the modular version (recommended)python main_new.py# Or run the original versionpython main.py```## 📁 Project Structure```SafeStep/├── main_new.py              # 🚀 Main application (modular version)├── main.py                  # Original monolithic version├── install.py               # 🔧 Automated installation script├── requirements.txt         # 📦 Python dependencies├── config.json             # ⚙️ Configuration settings├── README.md               # 📖 This documentation├── README_MODULAR.md       # 📚 Detailed modular architecture├── .gitignore              # 🚫 Git ignore rules│├── ai_models/              # 🤖 AI and ML components│   ├── __init__.py│   ├── depth_estimator.py  # MiDaS depth estimation│   └── object_detector.py  # YOLO object detection│├── sensors/                # 📡 Hardware interfaces│   ├── __init__.py│   ├── camera_manager.py   # Camera management│   ├── gesture_controller.py # MediaPipe gestures│   └── voice_assistant.py  # Speech recognition & TTS│├── navigation/             # 🧭 Navigation logic│   ├── __init__.py│   └── path_planner.py     # Path planning & obstacle avoidance│├── database/               # 💾 Data persistence│   ├── __init__.py│   └── database_manager.py # SQLite database operations│├── models/                 # 📊 Data structures│   ├── __init__.py│   └── data_models.py      # Core data classes & enums│├── ui/                     # 🖥️ User interface│   ├── __init__.py│   └── main_window.py      # CustomTkinter UI components│└── Reports/                # 📊 Research and documentation    ├── Object Detection final.pptx    └── Research Paper .pdf```## ⚙️ ConfigurationThe system uses `config.json` for configuration:```json{  "camera": {    "device_id": 0,    "resolution": [1280, 720],    "fps": 60  },  "detection": {    "confidence_threshold": 0.5,    "nms_threshold": 0.4,    "model_path": "yolo11n.pt"  },  "navigation": {    "safe_distance": 2.0,    "warning_distance": 1.0,    "emergency_distance": 0.5  },  "voice": {    "enabled": true,    "language": "en-US",    "rate": 150,    "volume": 0.9  },  "ui": {    "theme": "dark",    "window_size": [1600, 1000],    "fullscreen": false  }}```## 🎮 Usage Guide### Voice Commands- **"Navigate to bathroom"** - Find nearest restroom- **"Find exit"** - Locate nearest exit- **"Where am I?"** - Get current location- **"What do you see?"** - Describe surroundings- **"Emergency"** - Activate emergency mode### Gesture Controls- **🖐️ Open Palm** - Stop navigation- **👆 Pointing** - Forward direction- **👈 Left Hand** - Turn left- **👉 Right Hand** - Turn right- **✋ Raised Hand** - Help request### UI Controls- **Mode Selector** - Switch between navigation modes- **Confidence Slider** - Adjust detection sensitivity- **Voice Toggle** - Enable/disable voice assistant- **Emergency Button** - Quick emergency activation- **Export Data** - Export analytics and logs## 🔧 Troubleshooting### Common Issues#### Import Errors```bash# Run installation scriptpython install.py# Or manually install dependenciespip install -r requirements.txt```#### Camera Not Working```bash# Check camera availabilitypython -c "import cv2; cap = cv2.VideoCapture(0); print('Camera:', cap.isOpened()); cap.release()"# Update config.json camera.device_id if needed```#### Voice Features Not Working```bash# Test microphonepython -c "import speech_recognition as sr; print('Microphones:', sr.Microphone.list_microphone_names())"# Test TTSpython -c "import pyttsx3; engine = pyttsx3.init(); engine.say('Test'); engine.runAndWait()"```#### GPU/CUDA Issues```bash# Check CUDApython -c "import torch; print('CUDA:', torch.cuda.is_available())"# Install CPU version if neededpip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu```### Performance Optimization#### For Better Performance1. **Use GPU**: Install CUDA-enabled PyTorch2. **Reduce Resolution**: Lower camera resolution in config3. **Adjust Confidence**: Increase confidence threshold4. **Close Other Apps**: Free up system resources#### For Accessibility1. **Increase Voice Volume**: Adjust in config2. **Slow Down Speech**: Reduce rate in config3. **Enable Fullscreen**: Set fullscreen: true in config4. **Use High Contrast**: Dark theme is default## 📊 Features in Detail### AI Models- **YOLO Object Detection**: Real-time detection of 80+ object classes- **MiDaS Depth Estimation**: Accurate 3D depth mapping- **Distance Calculation**: Physics-based distance estimation- **Risk Assessment**: Multi-factor risk analysis### Navigation System- **Path Planning**: A* algorithm with obstacle avoidance- **Safety Zones**: Configurable distance thresholds- **Real-time Updates**: Continuous path recalculation- **Emergency Routing**: Fastest path to exits### Analytics & Logging- **Detection Logging**: Comprehensive object detection history- **Session Tracking**: Navigation session analytics- **Performance Metrics**: FPS, detection counts, accuracy- **Data Export**: JSON export of analytics data### Accessibility Features- **Voice Feedback**: Real-time audio navigation instructions- **Gesture Control**: Hand gesture recognition- **Emergency Mode**: Quick activation for urgent situations- **Multi-modal Input**: Voice, gesture, and UI controls## 🤝 ContributingWe welcome contributions! Please follow these guidelines:### Development Setup1. **Fork** the repository2. **Clone** your fork locally3. **Create** a feature branch4. **Install** dependencies: `python install.py`5. **Test** your changes: `python main_new.py`6. **Submit** a pull request### Code Guidelines- Follow PEP 8 style guidelines- Add comprehensive error handling- Include proper logging- Write clear documentation- Test thoroughly before submitting### Adding New Features1. **Create Module**: Add new module in appropriate directory2. **Update Imports**: Add to `__init__.py` files3. **Update Main**: Integrate into `main_new.py`4. **Test**: Test thoroughly5. **Document**: Update documentation## 📝 LicenseThis project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.## 🙏 Acknowledgments- **YOLO**: Real-time object detection- **MiDaS**: Depth estimation models- **MediaPipe**: Hand gesture recognition- **CustomTkinter**: Modern UI framework- **OpenCV**: Computer vision library- **PyTorch**: Deep learning framework## 📞 Support### Getting Help1. **Check Documentation**: Review this README and `README_MODULAR.md`2. **Check Logs**: Review `indoor_nav.log` for error details3. **Test Components**: Use individual module tests4. **Check Configuration**: Verify `config.json` settings### Reporting IssuesWhen reporting issues, please include:- **System Info**: OS, Python version, hardware specs- **Error Logs**: Relevant log entries from `indoor_nav.log`- **Steps to Reproduce**: Clear reproduction steps- **Expected vs Actual**: What you expected vs what happened### Community- **GitHub Issues**: [Report bugs and request features](https://github.com/PathanWasim/SafeStep/issues)- **Discussions**: [Join community discussions](https://github.com/PathanWasim/SafeStep/discussions)- **Wiki**: [Check the wiki for additional documentation](https://github.com/PathanWasim/SafeStep/wiki)## 🚀 Roadmap### Planned Features- [ ] **Indoor Mapping**: SLAM-based indoor mapping- [ ] **Bluetooth Integration**: Connect to external sensors- [ ] **Mobile App**: Companion mobile application- [ ] **Cloud Analytics**: Remote analytics and monitoring- [ ] **Multi-language**: Support for multiple languages- [ ] **Offline Mode**: Work without internet connection### Performance Improvements- [ ] **Model Optimization**: Quantized models for faster inference- [ ] **Memory Optimization**: Reduced memory footprint- [ ] **Battery Optimization**: Power-efficient processing- [ ] **Parallel Processing**: Multi-threaded operations---**🎉 SafeStep - Making indoor navigation accessible for everyone!***Built with ❤️ for the visually impaired community*
+**🧭 SafeStep - Advanced Indoor Navigation System**
 
+[![Python](https://img.shields.io/badge/Python-3.8%2B-blue.svg)](https://www.python.org/downloads/)
+[![PyTorch](https://img.shields.io/badge/PyTorch-2.0%2B-red.svg)](https://pytorch.org/)
+[![OpenCV](https://img.shields.io/badge/OpenCV-4.8%2B-green.svg)](https://opencv.org/)
+[![License](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
+**AI-Powered Indoor Navigation System for Visually Impaired and Accessibility**
+
+SafeStep provides real-time, AI-driven indoor navigation assistance tailored for visually impaired users and those requiring additional accessibility support. Leveraging computer vision, deep learning, and multi-modal interfaces, SafeStep guides users safely through complex indoor spaces.
+
+---
+
+## 📋 Table of Contents
+
+1. [Key Features](#key-features)
+2. [System Requirements](#system-requirements)
+3. [Quick Start](#quick-start)
+4. [Project Structure](#project-structure)
+5. [Configuration](#configuration)
+6. [Usage Guide](#usage-guide)
+7. [Troubleshooting](#troubleshooting)
+8. [Performance Optimization](#performance-optimization)
+9. [Detailed Features](#detailed-features)
+10. [Contributing](#contributing)
+11. [License](#license)
+12. [Acknowledgments](#acknowledgments)
+13. [Support](#support)
+14. [Roadmap](#roadmap)
+
+---
+
+## 🔑 Key Features
+
+### 🤖 AI-Powered Detection
+
+* **Real-time Object Detection**: YOLO-based detection of people, obstacles, doors, stairs, and furniture.
+* **Depth Estimation**: MiDaS model for accurate 3D depth mapping.
+* **Risk Assessment**: Multi-factor classification into High, Medium, Low, or Minimal risk zones.
+* **Distance Calculation**: Physics-based estimation of object distances.
+
+### 🎤 Multi-Modal Accessibility
+
+* **Voice Assistant**: Natural language processing for voice commands and feedback.
+* **Gesture Recognition**: MediaPipe-powered hand gesture controls.
+* **Text-to-Speech**: Real-time audio instructions and environment descriptions.
+* **Emergency Mode**: One-command activation for critical situations.
+
+### 🧭 Advanced Navigation
+
+* **A* Path Planning*\*: Efficient route computation with obstacle avoidance.
+* **Real-time Analytics**: Continuous logging of detections and navigation metrics.
+* **Safety Monitoring**: Dynamic alerts based on configurable distance thresholds.
+* **Multiple Modes**: Autonomous, Guided, Exploration, and Emergency modes.
+
+### 🖥️ Modern User Interface
+
+* **Dark Theme**: Sleek CustomTkinter interface by default.
+* **Live Visualization**: Video feed overlays highlighting detections.
+* **Analytics Dashboard**: Exportable statistics and session logs.
+* **Responsive Layout**: Scales across different screen sizes.
+
+---
+
+## 💻 System Requirements
+
+| Component             | Minimum             | Recommended         |
+| --------------------- | ------------------- | ------------------- |
+| Python                | 3.8+                | 3.9+                |
+| RAM                   | 4 GB                | 8 GB+               |
+| Camera                | Any USB/webcam      | 720p or higher      |
+| Microphone & Speakers | Required            | High-quality device |
+| GPU (optional)        | CPU inference       | CUDA-enabled GPU    |
+| OS                    | Windows/Linux/macOS | Windows/Linux/macOS |
+
+---
+
+## 🚀 Quick Start
+
+1. **Clone the repository**
+
+   ```bash
+   git clone https://github.com/PathanWasim/SafeStep.git
+   cd SafeStep
+   ```
+
+2. **Install dependencies**
+
+   ```bash
+   python install.py
+   ```
+
+   > This script will:
+   >
+   > * Verify Python version
+   > * Install PyTorch (with CUDA if available)
+   > * Install other Python packages
+   > * Generate default `config.json`
+   > * Validate imports
+
+3. **Run the application**
+
+   * **Modular version (recommended)**:
+
+     ```bash
+     python main_new.py
+     ```
+   * **Original version**:
+
+     ```bash
+     python main.py
+     ```
+
+---
+
+## 📁 Project Structure
+
+```plaintext
+SafeStep/
+├── main_new.py            # 🚀 Modular entry point
+├── main.py                # Monolithic version
+├── install.py             # 🔧 Automated installer
+├── requirements.txt       # 📦 Python dependencies
+├── config.json            # ⚙️ Default configuration
+├── README.md              # 📖 Project documentation
+├── README_MODULAR.md      # 🗂️ Modular architecture details
+├── LICENSE                # 📜 MIT License
+├── ai_models/             # 🤖 AI components
+│   ├── depth_estimator.py # MiDaS depth mapping
+│   └── object_detector.py # YOLO-based detection
+├── sensors/               # 📡 Hardware interfaces
+│   ├── camera_manager.py  # Camera input handling
+│   ├── gesture_controller.py # MediaPipe gestures
+│   └── voice_assistant.py # Speech recognition & TTS
+├── navigation/            # 🧭 Path planning & safety
+│   └── path_planner.py    # A* implementation
+├── database/              # 💾 Persistence layer
+│   └── database_manager.py# SQLite operations
+├── models/                # 📊 Data structures & enums
+│   └── data_models.py     # Core classes
+├── ui/                    # 🖥️ User interface
+│   └── main_window.py     # CustomTkinter components
+└── Reports/               # 📊 Research and documentation
+    ├── Object Detection final.pptx
+    └── Research Paper .pdf
+```
+
+---
+
+## ⚙️ Configuration
+
+Edit `config.json` to customize camera settings, detection thresholds, navigation distances, and UI options:
+
+```json
+{
+  "camera": {
+    "device_id": 0,
+    "resolution": [1280, 720],
+    "fps": 60
+  },
+  "detection": {
+    "confidence_threshold": 0.5,
+    "nms_threshold": 0.4,
+    "model_path": "yolo11n.pt"
+  },
+  "navigation": {
+    "safe_distance": 2.0,
+    "warning_distance": 1.0,
+    "emergency_distance": 0.5
+  },
+  "voice": {
+    "enabled": true,
+    "language": "en-US",
+    "rate": 150,
+    "volume": 0.9
+  },
+  "ui": {
+    "theme": "dark",
+    "window_size": [1600, 1000],
+    "fullscreen": false
+  }
+}
+```
+
+---
+
+## 🎮 Usage Guide
+
+### Voice Commands
+
+* **Navigate to \[destination]** — e.g., "Navigate to bathroom"
+* **Find exit** — Locate the nearest exit
+* **Where am I?** — Describe current location
+* **What do you see?** — Enumerate visible objects
+* **Emergency** — Trigger emergency mode
+
+### Gesture Controls
+
+* **Open palm** — Stop or pause navigation
+* **Pointing finger** — Move forward
+* **Left-hand wave** — Turn left
+* **Right-hand wave** — Turn right
+* **Raised hand** — Request help
+
+### UI Controls
+
+* **Mode Selector** — Switch navigation modes
+* **Confidence Slider** — Adjust detection sensitivity
+* **Voice Toggle** — Enable/disable speech assistant
+* **Emergency Button** — Immediate emergency activation
+* **Export Data** — Save analytics as JSON
+
+---
+
+## 🔧 Troubleshooting
+
+### Common Issues
+
+1. **Import errors**
+
+   ```bash
+   python install.py
+   # or
+   pip install -r requirements.txt
+   ```
+
+2. **Camera not detected**
+
+   ```bash
+   python -c "import cv2; cap = cv2.VideoCapture(0); print('Camera open:', cap.isOpened()); cap.release()"
+   ```
+
+3. **Voice/TTS failures**
+
+   ```bash
+   python -c "import speech_recognition as sr; print(sr.Microphone.list_microphone_names())"
+   python -c "import pyttsx3; engine = pyttsx3.init(); engine.say('Test'); engine.runAndWait()"
+   ```
+
+4. **CUDA/GPU issues**
+
+   ```bash
+   python -c "import torch; print('CUDA available:', torch.cuda.is_available())"
+   pip install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+   ```
+
+---
+
+## ⛑️ Performance Optimization
+
+* **Enable GPU**: Use CUDA-enabled PyTorch for inference.
+* **Lower Resolution**: Decrease camera resolution in `config.json`.
+* **Adjust Thresholds**: Tweak confidence and NMS values.
+* **Close Background Apps**: Free up CPU/RAM resources.
+
+---
+
+## 📊 Detailed Features
+
+### AI Models
+
+* **YOLO**: Detects 80+ classes in real time.
+* **MiDaS**: Generates depth maps for distance estimation.
+* **Risk Analysis**: Combines depth, speed, and context.
+
+### Navigation System
+
+* **A\***: Finds optimal routes with dynamic re-planning.
+* **Safety Zones**: Configurable per-user distance settings.
+* **Emergency Routing**: Fastest path to nearest exit.
+
+### Analytics & Logging
+
+* **Detection Logs**: Timestamped object events.
+* **Session Metrics**: Duration, distance traveled, errors.
+* **Export**: Download logs as JSON for offline analysis.
+
+### Accessibility
+
+* **Speech Feedback**: Clear, natural TTS guidance.
+* **Gesture Input**: Hands-free control via MediaPipe.
+* **Emergency Mode**: Vocal and visual alerts.
+
+---
+
+## 🤝 Contributing
+
+1. **Fork** the repo
+2. **Clone** your fork
+3. **Create** a feature branch
+4. **Install** dependencies: `python install.py`
+5. **Implement** and **Test** your changes
+6. **Document** updates and **Submit** a Pull Request
+
+**Code Guidelines:**
+
+* Follow PEP8 standards
+* Include error handling and logging
+* Write unit tests
+* Update documentation
+
+---
+
+## 📜 License
+
+This project is licensed under the MIT License. See [LICENSE](LICENSE) for details.
+
+---
+
+## 🙏 Acknowledgments
+
+* **YOLO**: Real-time detection
+* **MiDaS**: Depth estimation
+* **MediaPipe**: Gesture recognition
+* **CustomTkinter**: UI framework
+* **OpenCV** & **PyTorch**: Core vision and ML libraries
+
+---
+
+## 📞 Support
+
+* **Documentation**: Review this README and `README_MODULAR.md`
+* **Logs**: Check `indoor_nav.log`
+* **Issues**: Report at [GitHub Issues](https://github.com/PathanWasim/SafeStep/issues)
+* **Discussions**: Join at [GitHub Discussions](https://github.com/PathanWasim/SafeStep/discussions)
+
+---
+
+## 🚀 Roadmap
+
+* [ ] SLAM-based indoor mapping
+* [ ] Bluetooth sensor integration
+* [ ] Companion mobile app
+* [ ] Cloud analytics dashboard
+* [ ] Multi-language support
+* [ ] Offline navigation mode
+
+**SafeStep – Empowering accessible indoor navigation**
